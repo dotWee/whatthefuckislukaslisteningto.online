@@ -7,13 +7,9 @@ a.navbar-brand {
   word-break: break-all;
 }
 
-/* Provide sufficient contrast against white background */
-a {
-  color: blue;
-}
-
 /* Sticky footer styles
 -------------------------------------------------- */
+
 html {
   font-size: 14px;
 }
@@ -81,7 +77,10 @@ body {
   padding-top: 1rem;
 }
 
-.navbar-brand {}
+.branded-border {
+  padding: 0.1em;
+  border-width: 2px !important;
+}
 
 @media (min-width: 48em) {
   .navbar-brand {
@@ -99,22 +98,12 @@ body {
   padding: 0 1.5rem;
 }
 
-.btn-outline-dark {
-  border-color: blue;
-  color: blue;
-}
-
-.btn-outline-dark:hover {
-  background-color: blue;
-}
-
 a:hover,
 .nav-link:hover {
   text-decoration: underline;
-  color: blue
 }
 
-.h1,
+.h1 i,
 .h2 {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }

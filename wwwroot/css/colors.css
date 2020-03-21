@@ -1,0 +1,18 @@
+/* Provide sufficient contrast against white background */
+
+a {
+    color: blue;
+}
+
+a:hover,
+.nav-link:hover {
+    color: blue
+}
+
+.branded-text {
+    color: #d51007 !important;
+}
+
+.branded-border {
+    border-color: black !important;
+}

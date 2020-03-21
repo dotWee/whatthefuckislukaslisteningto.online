@@ -11,15 +11,20 @@ namespace WhatTheFuckIsLukasListeningTo.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
+        private string _trackArtist = "Testartist";
+        private string _trackTitle = "Titletest";
+
 
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-
+            ViewData["TrackArtist"] = _trackArtist;
+            ViewData["TrackTitle"] = _trackTitle;
+            return Page();
         }
     }
 }
