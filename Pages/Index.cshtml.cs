@@ -6,13 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
+using WhatTheFuckIsLukasListeningTo.Helper;
+using WhatTheFuckIsLukasListeningTo.Model;
+
 namespace WhatTheFuckIsLukasListeningTo.Pages
 {
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private string _trackArtist = "Testartist";
-        private string _trackTitle = "Titletest";
+        public TrackModel Track;
 
 
         public IndexModel(ILogger<IndexModel> logger)
@@ -20,11 +22,12 @@ namespace WhatTheFuckIsLukasListeningTo.Pages
             _logger = logger;
         }
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGet()
         {
-            ViewData["TrackArtist"] = _trackArtist;
-            ViewData["TrackTitle"] = _trackTitle;
+            Track = await LastFmApiHelper.GetLastTrack();
+            
             return Page();
         }
     }
+
 }

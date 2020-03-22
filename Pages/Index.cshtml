@@ -4,11 +4,11 @@
 <p class="h2">Lukas is currently listening to</p>
 
 <p class="h1">
-    <em class="text-muted branded-text border branded-border"><a href="" class="branded-text">@ViewData["TrackTitle"]</a></em> 
+    <em class="text-muted branded-text border branded-border"><a href="@Model.Track.Link" class="branded-text">@Model.Track.Title</a></em> 
     
     <small><i>by</i></small>
     
-    <em class="text-muted branded-text border branded-border"><a href="" class="branded-text">@ViewData["TrackArtist"]</a></em>
+    <em class="text-muted branded-text border branded-border"><a href="@Model.Track.Link" class="branded-text">@Model.Track.Artist</a></em>
 </p>
 
 <p>check my <a class="branded-text" href="http://last.fm/user/Twnksinr">last.fm profile</a> for previous tracks!</p>
