@@ -6,7 +6,6 @@ _what the fuck is lukas listening to*?_
 
 ![screenshot.png](https://github.com/dotWee/whatthefuckislukaslisteningto.online/raw/master/art/screenshot.png)
 
-
 this repository contains the source code of [whatthefuckislukaslisteningto.online](http://heroku.whatthefuckislukaslisteningto.online/), written in some `c#` using the `.net core 3` framework.
 
 ## [setup](#setup)
@@ -22,6 +21,10 @@ this repository contains the source code of [whatthefuckislukaslisteningto.onlin
     ```
 
 ## [usage](#usage)
+
+> **note**: last.fm api access required!
+
+you need a last.fm api key to use this project. request one [here](https://www.last.fm/api/intro), then put your key in the [appsettings.json](./appsettings.json).
 
 ### run site locally
 

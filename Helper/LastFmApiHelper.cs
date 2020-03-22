@@ -7,17 +7,38 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Linq;
 using WhatTheFuckIsLukasListeningTo.Model;
+using Microsoft.Extensions.Configuration;
 
 namespace WhatTheFuckIsLukasListeningTo.Helper
 {
     public class LastFmApiHelper
     {
-        private const string API_KEY = "YOUR_API_KEY";
-        private const string USER_NAME = "YOUR_USER_NAME";
+        private readonly IConfiguration Configuration;
 
-        private static async Task<string> GetJsonResponse()
+        public LastFmApiHelper(IConfiguration configuration)
         {
-            string url = $"http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user={USER_NAME}&api_key={API_KEY}&format=json&limit=1";
+            Configuration = configuration;
+        }
+
+        private string LastFmApiKey
+        {
+            get
+            {
+                return Configuration["LastFm:ApiKey"];
+            }
+        }
+
+        private string LastFmUserName
+        {
+            get
+            {
+                return Configuration["LastFm:UserName"];
+            }
+        }
+
+        private async Task<string> GetJsonResponse()
+        {
+            string url = $"http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user={LastFmUserName}&api_key={LastFmApiKey}&format=json&limit=1";
 
             using (HttpClient client = new HttpClient())
             {
@@ -38,7 +59,7 @@ namespace WhatTheFuckIsLukasListeningTo.Helper
             return null;
         }
 
-        public static async Task<TrackModel> GetLastTrack()
+        public async Task<TrackModel> GetLastTrack()
         {
             var json = await GetJsonResponse();
             var options = new JsonDocumentOptions
