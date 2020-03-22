@@ -40,6 +40,46 @@ this repository contains the source code of [whatthefuckislukaslisteningto.onlin
 
 3. now browse to [localhost:5000](http://localhost:5000)
 
+### run using a self-made docker [docker](https://www.docker.com/) image
+
+1. build the docker image:
+
+    ```bash
+    $ docker build \
+        --pull --rm \
+        -t whatthefuckislukaslisteningto .
+    ```
+
+2. and run the fresh docker image:
+
+    ```bash
+    $ docker run \
+        --rm -it \
+        -p 8080:80 \
+        whatthefuckislukaslisteningto
+    ```
+
+3. now browse to [localhost:8080](http://localhost:8080)
+
+### or pull the [docker](https://www.docker.com/) image from the docker hub
+
+1. pull the docker image:
+
+    ```bash
+    $ docker pull dotwee/whatthefuckislukaslisteningto
+    ```
+
+2. and run the docker image:
+
+    ```bash
+    $ docker run \
+        --rm -it \
+        -p 8080:80 \
+        dotwee/whatthefuckislukaslisteningto
+    ```
+
+3. now browse to [localhost:8080](http://localhost:8080)
+
 ## [license](#license)
 
 copyright (c) 2020 lukas 'dotwee' wolfsteiner <lukas@wolfsteiner.media>
