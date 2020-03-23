@@ -344,4 +344,5 @@ wwwroot/js/jquery.min.js
 wwwroot/js/jquery.validate.min.js
 wwwroot/js/bootstrap.bundle.min.js
 wwwroot/css/bootstrap.min.css
-node_modules/
+
+appsettings.Production.json
