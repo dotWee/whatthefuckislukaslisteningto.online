@@ -1,0 +1,27 @@
+{
+  "name": "whatthefuckislukaslisteningto.online",
+  "version": "1.0.0",
+  "description": "What The Fuck Is Lukas Listening To?!",
+  "private": true,
+  "dependencies": {
+    "heroku": "^7.39.1"
+  },
+  "devDependencies": {
+    "bootstrap": "^4.4.1",
+    "grunt": "^1.1.0",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.1",
+    "jquery-validation": "^1.19.1",
+    "jquery-validation-unobtrusive": "^3.2.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dotWee/whatthefuckislukaslisteningto.online.git"
+  },
+  "author": "Lukas dotWee Wolfsteiner",
+  "license": "WTFYW",
+  "bugs": {
+    "url": "https://github.com/dotWee/whatthefuckislukaslisteningto.online/issues"
+  },
+  "homepage": "https://github.com/dotWee/whatthefuckislukaslisteningto.online#readme"
+}

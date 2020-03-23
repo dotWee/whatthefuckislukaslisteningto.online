@@ -338,3 +338,8 @@ Temporary Items
 .history
 
 # End of https://www.gitignore.io/api/git,macos,dotnetcore,aspnetcore,visualstudiocode
+wwwroot/js/jquery.validate.unobtrusive.min.js
+wwwroot/js/jquery.min.js
+wwwroot/js/jquery.validate.min.js
+wwwroot/js/bootstrap.bundle.min.js
+wwwroot/css/bootstrap.min.css
