@@ -1,9 +1,7 @@
 .vscode/
 art/
 bin/
-node_modules/
 obj/
+node_modules/
 .gitignore
-package.json
-package-lock.json
 README.md

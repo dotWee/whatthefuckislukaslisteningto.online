@@ -34,7 +34,9 @@ you need a last.fm api key to use this project. request one [here](https://www.l
     $ dotnet restore
     ```
 
-2. start building & run on localhost:
+2. pull npm dependencies (bootstrap, jquery)
+
+3. start building & run on localhost:
 
     ```bash
     $ dotnet run
@@ -44,7 +46,7 @@ you need a last.fm api key to use this project. request one [here](https://www.l
           Application started. Press Ctrl+C to shut down.
     ```
 
-3. now browse to [localhost:5000](http://localhost:5000)
+4. now browse to [localhost:5000](http://localhost:5000)
 
 ### run using a self-made docker [docker](https://www.docker.com/) image
 
