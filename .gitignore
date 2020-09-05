@@ -339,3 +339,4 @@ Temporary Items
 
 wwwroot/lib/
 appsettings.Production.json
+appsettings.Development.json
