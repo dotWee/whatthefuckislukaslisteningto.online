@@ -23,22 +23,32 @@ namespace WhatTheFuckIsLukasListeningTo.Helper
         private string LastFmApiKey
         {
             get
-            {
+            {   
+                var envApiKey = Environment.GetEnvironmentVariable("LASTFM_API_KEY");
+                if (!String.IsNullOrEmpty(envApiKey)) {
+                    return envApiKey;
+                }
+
                 return Configuration["LastFm:ApiKey"];
             }
         }
 
-        private string LastFmUserName
+        private string LastFmUser
         {
             get
             {
-                return Configuration["LastFm:UserName"];
+                var envUser = Environment.GetEnvironmentVariable("LASTFM_USER");
+                if (!String.IsNullOrEmpty(envUser)) {
+                    return envUser;
+                }
+
+                return Configuration["LastFm:User"];
             }
         }
 
         private async Task<string> GetJsonResponse()
         {
-            string url = $"http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user={LastFmUserName}&api_key={LastFmApiKey}&format=json&limit=1";
+            string url = $"http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user={LastFmUser}&api_key={LastFmApiKey}&format=json&limit=1";
 
             using (HttpClient client = new HttpClient())
             {
