@@ -20,6 +20,16 @@ this repository contains the source code of [whatthefuckislukaslisteningto.onlin
     $ cd whatthefuckislukaslisteningto.online
     ```
 
+3. (optional) update web dependencies (bootstrap & jquery w/ extensions) using [libman](https://docs.microsoft.com/en-us/aspnet/core/client-side/libman/)
+
+    ```bash
+    # to install libman
+    $ dotnet tool install -g Microsoft.Web.LibraryManager.Cli
+
+    # use libman to pull the binaries
+    $ libman restore
+    ```
+
 ## [usage](#usage)
 
 > **note**: last.fm api access required!
@@ -34,9 +44,7 @@ you need a last.fm api key to use this project. request one [here](https://www.l
     $ dotnet restore
     ```
 
-2. pull npm dependencies (bootstrap, jquery)
-
-3. start building & run on localhost:
+2. start building & run on localhost:
 
     ```bash
     $ dotnet run
@@ -46,7 +54,7 @@ you need a last.fm api key to use this project. request one [here](https://www.l
           Application started. Press Ctrl+C to shut down.
     ```
 
-4. now browse to [localhost:5000](http://localhost:5000)
+3. now browse to [localhost:5000](http://localhost:5000)
 
 ### run using a self-made docker [docker](https://www.docker.com/) image
 
