@@ -336,7 +336,5 @@ Temporary Items
 .history
 
 # End of https://www.gitignore.io/api/git,macos,dotnetcore,aspnetcore,visualstudiocode
-
-wwwroot/lib/
 appsettings.Production.json
 appsettings.Development.json
