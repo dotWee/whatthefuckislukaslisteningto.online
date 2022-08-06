@@ -11,3 +11,10 @@ updates:
     schedule:
       interval: "weekly"
       day: "saturday"
+
+  # Maintain dependencies for nuget
+  - package-ecosystem: "nuget"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "saturday"
