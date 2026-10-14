@@ -1,102 +1,47 @@
 # [whatthefuckislukaslisteningto.online](https://whatthefuckislukaslisteningto.online/)
 
-[![GitHub License](https://img.shields.io/github/license/whatthefuckislukaslisteningto.online)](https://github.com/dotWee/whatthefuckislukaslisteningto.online/blob/master/LICENSE)
-
 _what the fuck is lukas listening to*?_
 
-![screenshot.png](https://github.com/dotWee/whatthefuckislukaslisteningto.online/raw/master/art/screenshot.png)
+this repository contains the source of [whatthefuckislukaslisteningto.online](https://whatthefuckislukaslisteningto.online/), a [cloudflare worker](https://developers.cloudflare.com/workers/) that reads the latest scrobble from last.fm and renders it as a tiny website.
 
-this repository contains the source code of [whatthefuckislukaslisteningto.online](https://whatthefuckislukaslisteningto.online/), written in some `c#` using the `.net core 3` framework.
+## setup
 
-## [setup](#setup)
+1. install [node.js](https://nodejs.org/) 24 or newer
+2. clone the repository and install dependencies:
 
-1. get the [.net core 3.1 sdk](https://dotnet.microsoft.com/download/) for your platform
+```bash
+git clone https://github.com/dotWee/whatthefuckislukaslisteningto.online
+cd whatthefuckislukaslisteningto.online
+npm install
+```
 
-2. clone this git repository and change into the repo directory:
+3. request a [last.fm api key](https://www.last.fm/api/intro)
+4. copy `.dev.vars.example` to `.dev.vars` and set `LASTFM_API_KEY`
 
-    ```bash
-    $ git clone https://github.com/dotWee/whatthefuckislukaslisteningto.online
+the last.fm username is a worker var (`LASTFM_USER`, currently `Twnksinr`).
 
-    $ cd whatthefuckislukaslisteningto.online
-    ```
+## usage
 
-3. (optional) update web dependencies (bootstrap & jquery w/ extensions) using [libman](https://docs.microsoft.com/en-us/aspnet/core/client-side/libman/)
+```bash
+npm run lint
+npm test
+npm run dev
+```
 
-    ```bash
-    # to install libman
-    $ dotnet tool install -g Microsoft.Web.LibraryManager.Cli
+then open [localhost:8787](http://localhost:8787).
 
-    # use libman to pull the binaries
-    $ libman restore
-    ```
+## deploy
 
-## [usage](#usage)
+```bash
+npx wrangler secret put LASTFM_API_KEY
+npm run deploy
+```
 
-> **note**: last.fm api access required!
+github actions deploys on push to `master` / `main` when `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets are set.
 
-you need a last.fm api key to use this project. request one [here](https://www.last.fm/api/intro), then put your key in the [appsettings.json](./appsettings.json).
+the worker is bound to `whatthefuckislukaslisteningto.online` as a custom domain.
 
-### run site locally
-
-1. pull required package dependencies:
-
-    ```bash
-    $ dotnet restore
-    ```
-
-2. start building & run on localhost:
-
-    ```bash
-    $ dotnet run
-    info: Microsoft.Hosting.Lifetime[0]
-          Now listening on: http://localhost:5000
-    info: Microsoft.Hosting.Lifetime[0]
-          Application started. Press Ctrl+C to shut down.
-    ```
-
-3. now browse to [localhost:5000](http://localhost:5000)
-
-### run using a self-made docker [docker](https://www.docker.com/) image
-
-1. build the docker image:
-
-    ```bash
-    $ docker build \
-        --pull --rm \
-        -t whatthefuckislukaslisteningto .
-    ```
-
-2. and run the fresh docker image:
-
-    ```bash
-    $ docker run \
-        --rm -it \
-        -p 8080:80 \
-        whatthefuckislukaslisteningto
-    ```
-
-3. now browse to [localhost:8080](http://localhost:8080)
-
-### or pull the [docker](https://www.docker.com/) image from the docker hub
-
-1. pull the docker image:
-
-    ```bash
-    $ docker pull dotwee/whatthefuckislukaslisteningto
-    ```
-
-2. and run the docker image:
-
-    ```bash
-    $ docker run \
-        --rm -it \
-        -p 8080:80 \
-        dotwee/whatthefuckislukaslisteningto
-    ```
-
-3. now browse to [localhost:8080](http://localhost:8080)
-
-## [license](#license)
+## license
 
 copyright (c) 2020 lukas 'dotwee' wolfsteiner <lukas@wolfsteiner.media>
 
