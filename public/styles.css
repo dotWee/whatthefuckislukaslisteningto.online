@@ -1,8 +1,22 @@
 :root {
-  color-scheme: light;
+  color-scheme: light dark;
   --accent: #2a6b2a;
   --ink: #111;
   --muted: #444;
+  --paper: #fff;
+  --line: #ddd;
+  --frame: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: #8fce8f;
+    --ink: #f2f2f2;
+    --muted: #b5b5b5;
+    --paper: #111;
+    --line: #333;
+    --frame: #f2f2f2;
+  }
 }
 
 * {
@@ -18,7 +32,7 @@ body {
 body {
   font-family: Georgia, "Times New Roman", Times, serif;
   color: var(--ink);
-  background: #fff;
+  background: var(--paper);
 }
 
 a {
@@ -42,7 +56,7 @@ a:hover {
 }
 
 header {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--line);
   margin: -1rem -1rem 0;
   padding: 1rem;
 }
@@ -77,10 +91,71 @@ main {
 .track {
   font-size: clamp(1.8rem, 4vw, 2.75rem);
   line-height: 1.4;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.track-slot {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.track-fit {
+  display: flex;
+  align-items: center;
+  column-gap: 0.35em;
+  width: max-content;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.track-fit > * {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.track-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.35em;
+  row-gap: 0.45em;
+}
+
+.track-line > * {
+  flex: 0 0 auto;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+@supports (container-type: scroll-state) {
+  .track-slot {
+    container-type: scroll-state;
+    container-name: track;
+  }
+
+  .track-line {
+    flex-wrap: nowrap;
+  }
+
+  @container track scroll-state(scrollable: inline) {
+    .track-line {
+      flex-direction: column;
+    }
+
+    .track-line > * {
+      white-space: normal;
+    }
+  }
 }
 
 .mark {
-  border: 2px solid #000;
+  border: 2px solid var(--frame);
   padding: 0.1em 0.2em;
 }
 
@@ -94,7 +169,7 @@ main a {
 }
 
 footer {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--line);
   margin: 0 -1rem -1rem;
   padding: 1rem;
   text-align: center;

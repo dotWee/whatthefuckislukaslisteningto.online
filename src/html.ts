@@ -72,9 +72,18 @@ export function renderHome(track: {
     "What The Fuck Is Lukas Listening To?!",
     `<p class="lede">${lede}</p>
 <p class="track">
-  <em class="mark"><a href="${link}">${title}</a></em>
-  <small><i>by</i></small>
-  <em class="mark"><a href="${link}">${artist}</a></em>
+  <span class="track-slot">
+    <span class="track-fit" aria-hidden="true">
+      <span class="mark">${title}</span>
+      <small><i>by</i></small>
+      <span class="mark">${artist}</span>
+    </span>
+    <span class="track-line">
+      <em class="mark"><a href="${link}">${title}</a></em>
+      <small><i>by</i></small>
+      <em class="mark"><a href="${link}">${artist}</a></em>
+    </span>
+  </span>
 </p>
 <p>check my <a href="${LIBREFM_PROFILE}">libre.fm profile</a> for previous tracks!</p>
 <p class="now"><small><a href="/">...and what about now?</a></small></p>`,
