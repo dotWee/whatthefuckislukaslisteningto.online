@@ -14,10 +14,10 @@
     "run_worker_first": ["/", "/about"],
   },
   "vars": {
-    "LASTFM_USER": "Twnksinr",
+    "LIBREFM_USER": "twnksinr",
   },
   "secrets": {
-    "required": ["LASTFM_API_KEY"],
+    "required": ["LIBREFM_API_KEY"],
   },
   "routes": [
     {

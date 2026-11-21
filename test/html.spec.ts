@@ -12,11 +12,11 @@ describe("html", () => {
     const page = renderHome({
       title: "A <b>Song</b>",
       artist: "An & Artist",
-      link: "https://www.last.fm/music/example",
+      link: "https://libre.fm/artist/example/_/Track",
     });
 
     expect(page).toContain("A &lt;b&gt;Song&lt;/b&gt;");
     expect(page).toContain("An &amp; Artist");
-    expect(page).toContain('href="https://www.last.fm/music/example"');
+    expect(page).toContain('href="https://libre.fm/artist/example/_/Track"');
   });
 });

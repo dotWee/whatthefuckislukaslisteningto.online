@@ -7,8 +7,8 @@ export default defineConfig({
       wrangler: { configPath: "./wrangler.jsonc" },
       miniflare: {
         bindings: {
-          LASTFM_API_KEY: "test-api-key",
-          LASTFM_USER: "Twnksinr",
+          LIBREFM_API_KEY: "00000000000000000000000000000000",
+          LIBREFM_USER: "twnksinr",
         },
       },
     }),

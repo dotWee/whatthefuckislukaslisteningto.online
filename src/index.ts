@@ -1,5 +1,5 @@
 import { GITHUB_URL, renderHome, renderUnavailable } from "./html";
-import { getLastTrack } from "./lastfm";
+import { getLastTrack } from "./librefm";
 
 function html(body: string, status = 200): Response {
   return new Response(body, {

@@ -2,7 +2,7 @@
 
 _what the fuck is lukas listening to*?_
 
-this repository contains the source of [whatthefuckislukaslisteningto.online](https://whatthefuckislukaslisteningto.online/), a [cloudflare worker](https://developers.cloudflare.com/workers/) that reads the latest scrobble from last.fm and renders it as a tiny website.
+this repository contains the source of [whatthefuckislukaslisteningto.online](https://whatthefuckislukaslisteningto.online/), a [cloudflare worker](https://developers.cloudflare.com/workers/) that reads the latest scrobble from [libre.fm](https://libre.fm/) and renders it as a tiny website.
 
 ## setup
 
@@ -15,10 +15,10 @@ cd whatthefuckislukaslisteningto.online
 npm install
 ```
 
-3. request a [last.fm api key](https://www.last.fm/api/intro)
-4. copy `.dev.vars.example` to `.dev.vars` and set `LASTFM_API_KEY`
+3. request a [libre.fm api key](https://libre.fm/api-keys.php) (32 characters)
+4. copy `.dev.vars.example` to `.dev.vars` and set `LIBREFM_API_KEY`
 
-the last.fm username is a worker var (`LASTFM_USER`, currently `Twnksinr`).
+the libre.fm username is a worker var (`LIBREFM_USER`, currently `twnksinr`).
 
 ## usage
 
@@ -32,8 +32,11 @@ then open [localhost:8787](http://localhost:8787).
 
 ## deploy
 
+set the production secret if you are migrating from last.fm:
+
 ```bash
-npx wrangler secret put LASTFM_API_KEY
+npx wrangler secret put LIBREFM_API_KEY
+npx wrangler secret delete LASTFM_API_KEY
 npm run deploy
 ```
 

@@ -4,17 +4,17 @@ export type Track = {
   link: string;
 };
 
-type LastFmArtist = {
+type ScrobbleArtist = {
   "#text"?: string;
 };
 
-type LastFmTrack = {
+type ScrobbleTrack = {
   name?: string;
   url?: string;
-  artist?: LastFmArtist | string;
+  artist?: ScrobbleArtist | string;
 };
 
-function artistName(artist: LastFmTrack["artist"]): string | undefined {
+function artistName(artist: ScrobbleTrack["artist"]): string | undefined {
   if (typeof artist === "string") {
     return artist;
   }
@@ -25,13 +25,13 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
 }
 
-function readTrack(value: unknown): LastFmTrack | undefined {
+function readTrack(value: unknown): ScrobbleTrack | undefined {
   if (!isRecord(value)) {
     return undefined;
   }
 
   const artist = value.artist;
-  const track: LastFmTrack = {
+  const track: ScrobbleTrack = {
     name: typeof value.name === "string" ? value.name : undefined,
     url: typeof value.url === "string" ? value.url : undefined,
   };
@@ -45,7 +45,7 @@ function readTrack(value: unknown): LastFmTrack | undefined {
   return track;
 }
 
-function firstTrack(payload: unknown): LastFmTrack | undefined {
+function firstTrack(payload: unknown): ScrobbleTrack | undefined {
   if (!isRecord(payload) || !isRecord(payload.recenttracks)) {
     return undefined;
   }
@@ -64,30 +64,32 @@ export function parseRecentTrack(payload: unknown): Track {
   const link = track?.url?.trim();
 
   if (!title || !artist || !link) {
-    throw new Error("last.fm response was missing track fields");
+    throw new Error("libre.fm response was missing track fields");
   }
 
   return { title, artist, link };
 }
 
+const LIBRE_FM_API = "https://libre.fm/2.0/";
+
 export async function getLastTrack(
   env: Env,
   ctx: ExecutionContext,
 ): Promise<Track> {
-  const user = env.LASTFM_USER;
+  const user = env.LIBREFM_USER;
   const cache = caches.default;
   const cacheKey = new Request(
-    `https://wtfillt.internal/lastfm/${encodeURIComponent(user)}`,
+    `https://wtfillt.internal/librefm/${encodeURIComponent(user)}`,
   );
   const cached = await cache.match(cacheKey);
   if (cached) {
     return parseRecentTrack(await cached.json());
   }
 
-  const url = new URL("https://ws.audioscrobbler.com/2.0/");
+  const url = new URL(LIBRE_FM_API);
   url.searchParams.set("method", "user.getrecenttracks");
   url.searchParams.set("user", user);
-  url.searchParams.set("api_key", env.LASTFM_API_KEY);
+  url.searchParams.set("api_key", env.LIBREFM_API_KEY);
   url.searchParams.set("format", "json");
   url.searchParams.set("limit", "1");
 
@@ -98,7 +100,7 @@ export async function getLastTrack(
   });
 
   if (!response.ok) {
-    throw new Error(`last.fm request failed: ${response.status}`);
+    throw new Error(`libre.fm request failed: ${response.status}`);
   }
 
   const payload: unknown = await response.json();

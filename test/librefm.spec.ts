@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseRecentTrack } from "../src/lastfm";
+import { parseRecentTrack } from "../src/librefm";
 
 describe("parseRecentTrack", () => {
   it("reads the first recent track", () => {
@@ -8,7 +8,7 @@ describe("parseRecentTrack", () => {
         track: [
           {
             name: "Fast Car",
-            url: "https://www.last.fm/music/Tracy+Chapman/_/Fast+Car",
+            url: "https://libre.fm/artist/Tracy+Chapman/_/Fast+Car",
             artist: { "#text": "Tracy Chapman" },
           },
         ],
@@ -18,7 +18,7 @@ describe("parseRecentTrack", () => {
     expect(track).toEqual({
       title: "Fast Car",
       artist: "Tracy Chapman",
-      link: "https://www.last.fm/music/Tracy+Chapman/_/Fast+Car",
+      link: "https://libre.fm/artist/Tracy+Chapman/_/Fast+Car",
     });
   });
 
@@ -27,7 +27,7 @@ describe("parseRecentTrack", () => {
       recenttracks: {
         track: {
           name: "Fast Car",
-          url: "https://www.last.fm/music/Tracy+Chapman/_/Fast+Car",
+          url: "https://libre.fm/artist/Tracy+Chapman/_/Fast+Car",
           artist: "Tracy Chapman",
         },
       },

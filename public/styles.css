@@ -1,6 +1,6 @@
 :root {
   color-scheme: light;
-  --lastfm: #d51007;
+  --librefm: #2a6b2a;
   --ink: #111;
   --muted: #444;
 }
@@ -85,7 +85,7 @@ main {
 
 .mark a,
 main a {
-  color: var(--lastfm);
+  color: var(--librefm);
 }
 
 .now {

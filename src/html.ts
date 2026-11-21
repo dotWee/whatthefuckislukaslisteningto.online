@@ -1,4 +1,4 @@
-const LASTFM_PROFILE = "https://www.last.fm/user/Twnksinr";
+const LIBREFM_PROFILE = "https://libre.fm/user/twnksinr";
 const GITHUB_URL =
   "https://github.com/dotWee/whatthefuckislukaslisteningto.online";
 
@@ -72,7 +72,7 @@ export function renderHome(track: {
   <small><i>by</i></small>
   <em class="mark"><a href="${link}">${artist}</a></em>
 </p>
-<p>check my <a href="${LASTFM_PROFILE}">last.fm profile</a> for previous tracks!</p>
+<p>check my <a href="${LIBREFM_PROFILE}">libre.fm profile</a> for previous tracks!</p>
 <p class="now"><small><a href="/">...and what about now?</a></small></p>`,
   );
 }
@@ -81,8 +81,8 @@ export function renderUnavailable(): string {
   return layout(
     "What The Fuck Is Lukas Listening To?!",
     `<p class="lede">Lukas is currently listening to</p>
-<p class="track">something last.fm would not tell us just now.</p>
-<p>check my <a href="${LASTFM_PROFILE}">last.fm profile</a> instead.</p>
+<p class="track">something libre.fm would not tell us just now.</p>
+<p>check my <a href="${LIBREFM_PROFILE}">libre.fm profile</a> instead.</p>
 <p class="now"><small><a href="/">...and what about now?</a></small></p>`,
   );
 }

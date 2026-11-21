@@ -13,7 +13,7 @@ const samplePayload = {
     track: [
       {
         name: "Fast Car",
-        url: "https://www.last.fm/music/Tracy+Chapman/_/Fast+Car",
+        url: "https://libre.fm/artist/Tracy+Chapman/_/Fast+Car",
         artist: { "#text": "Tracy Chapman" },
       },
     ],
