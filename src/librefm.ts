@@ -2,6 +2,7 @@ export type Track = {
   title: string;
   artist: string;
   link: string;
+  nowPlaying: boolean;
 };
 
 type ScrobbleArtist = {
@@ -12,6 +13,7 @@ type ScrobbleTrack = {
   name?: string;
   url?: string;
   artist?: ScrobbleArtist | string;
+  nowPlaying?: boolean;
 };
 
 function artistName(artist: ScrobbleTrack["artist"]): string | undefined {
@@ -25,6 +27,19 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
 }
 
+function isNowPlaying(value: unknown): boolean {
+  if (!isRecord(value)) {
+    return false;
+  }
+
+  const attr = value["@attr"];
+  if (!isRecord(attr)) {
+    return false;
+  }
+
+  return attr.nowplaying === "true" || attr.nowplaying === true;
+}
+
 function readTrack(value: unknown): ScrobbleTrack | undefined {
   if (!isRecord(value)) {
     return undefined;
@@ -34,6 +49,7 @@ function readTrack(value: unknown): ScrobbleTrack | undefined {
   const track: ScrobbleTrack = {
     name: typeof value.name === "string" ? value.name : undefined,
     url: typeof value.url === "string" ? value.url : undefined,
+    nowPlaying: isNowPlaying(value),
   };
 
   if (typeof artist === "string") {
@@ -67,7 +83,7 @@ export function parseRecentTrack(payload: unknown): Track {
     throw new Error("libre.fm response was missing track fields");
   }
 
-  return { title, artist, link };
+  return { title, artist, link, nowPlaying: track?.nowPlaying === true };
 }
 
 const LIBRE_FM_API = "https://libre.fm/2.0/";

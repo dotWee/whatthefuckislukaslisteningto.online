@@ -59,14 +59,18 @@ export function renderHome(track: {
   title: string;
   artist: string;
   link: string;
+  nowPlaying: boolean;
 }): string {
   const title = escapeHtml(track.title);
   const artist = escapeHtml(track.artist);
   const link = escapeHtml(track.link);
+  const lede = track.nowPlaying
+    ? "Lukas is currently listening to"
+    : "Lukas was recently listening to";
 
   return layout(
     "What The Fuck Is Lukas Listening To?!",
-    `<p class="lede">Lukas is currently listening to</p>
+    `<p class="lede">${lede}</p>
 <p class="track">
   <em class="mark"><a href="${link}">${title}</a></em>
   <small><i>by</i></small>

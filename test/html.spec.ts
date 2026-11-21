@@ -13,10 +13,23 @@ describe("html", () => {
       title: "A <b>Song</b>",
       artist: "An & Artist",
       link: "https://libre.fm/artist/example/_/Track",
+      nowPlaying: true,
     });
 
+    expect(page).toContain("Lukas is currently listening to");
     expect(page).toContain("A &lt;b&gt;Song&lt;/b&gt;");
     expect(page).toContain("An &amp; Artist");
     expect(page).toContain('href="https://libre.fm/artist/example/_/Track"');
+  });
+
+  it("describes a finished track as recent", () => {
+    const page = renderHome({
+      title: "Fast Car",
+      artist: "Tracy Chapman",
+      link: "https://libre.fm/artist/Tracy+Chapman/_/Fast+Car",
+      nowPlaying: false,
+    });
+
+    expect(page).toContain("Lukas was recently listening to");
   });
 });
